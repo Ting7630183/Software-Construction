@@ -1,0 +1,74 @@
+[
+  {
+    "Date": "11/10/21",
+    "Location": "MH",
+    "Distributed": 65910,
+    "Distributed_Janssen": 11700,
+    "Distributed_Moderna": 47700,
+    "Distributed_Pfizer": 6510,
+    "Administered": 43449,
+    "Administered_Janssen": 2259,
+    "Administered_Moderna": 39768,
+    "Administered_Pfizer": 1420
+  },
+  {
+    "Date": "11/10/21",
+    "Location": "DC",
+    "Distributed": 1373225,
+    "Distributed_Janssen": 62700,
+    "Distributed_Moderna": 522200,
+    "Distributed_Pfizer": 788325,
+    "Administered": 1104093,
+    "Administered_Janssen": 32227,
+    "Administered_Moderna": 405214,
+    "Administered_Pfizer": 666195
+  },
+  {
+    "Date": "11/10/21",
+    "Location": "MS",
+    "Distributed": 4261035,
+    "Distributed_Janssen": 196500,
+    "Distributed_Moderna": 1765080,
+    "Distributed_Pfizer": 2299455,
+    "Administered": 3064187,
+    "Administered_Janssen": 77395,
+    "Administered_Moderna": 1250406,
+    "Administered_Pfizer": 1734413
+  },
+  {
+    "Date": "11/10/21",
+    "Location": "DE",
+    "Distributed": 1771105,
+    "Distributed_Janssen": 79700,
+    "Distributed_Moderna": 702860,
+    "Distributed_Pfizer": 988545,
+    "Administered": 1349096,
+    "Administered_Janssen": 52917,
+    "Administered_Moderna": 516577,
+    "Administered_Pfizer": 777978
+  },
+  {
+    "Date": "11/10/21",
+    "Location": "MD",
+    "Distributed": 11466540,
+    "Distributed_Janssen": 521500,
+    "Distributed_Moderna": 4201740,
+    "Distributed_Pfizer": 6743300,
+    "Administered": 8826278,
+    "Administered_Janssen": 316535,
+    "Administered_Moderna": 3261853,
+    "Administered_Pfizer": 5234644
+  },
+  {
+    "Date": "11/10/21",
+    "Location": "CT",
+    "Distributed": 6453635,
+    "Distributed_Janssen": 301800,
+    "Distributed_Moderna": 2560340,
+    "Distributed_Pfizer": 3591495,
+    "Administered": 5592294,
+    "Administered_Janssen": 216767,
+    "Administered_Moderna": 2054435,
+    "Administered_Pfizer": 3319936
+  }
+]

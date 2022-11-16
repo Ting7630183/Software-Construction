@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Application.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Santorini</a> &gt; <a href="index.source.html" class="el_package">edu.cs214.hw3.GUI</a> &gt; <span class="el_source">Application.java</span></div><h1>Application.java</h1><pre class="source lang-java linenums">package edu.cs214.hw3.GUI;
+
+import edu.cs214.hw3.GameSantorini;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Map;
+import com.github.jknack.handlebars.Handlebars;
+import com.github.jknack.handlebars.Template;
+import fi.iki.elonen.NanoHTTPD;
+
+<span class="nc" id="L11">public class Application {</span>
+
+//    public class App extends NanoHTTPD {
+//        public static void main(String[] args) {
+//            try {
+//                new App();
+//            } catch (IOException ioe) {
+//                System.err.println(&quot;Couldn't start server:\n&quot; + ioe);
+//            }
+//        }
+//        private GameSantorini game;
+//        private Template template;
+//        public App() throws IOException {
+//            super(8080);
+//            this.game = new Games();
+//            Handlebars handlebars = new Handlebars();
+//            this.template = handlebars.compile(&quot;main&quot;);
+//            start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
+//            System.out.println(&quot;\nRunning! Point your browsers to http://localhost:8080/ \n&quot;);
+//        }
+//        @Override
+//        public Response serve(IHTTPSession session) {
+//            try {
+//                String uri = session.getUri();
+//                Map&lt;String, String&gt; params = session.getParms();
+//                if (uri.equals(&quot;/newgame&quot;)) {
+//                    this.game = new Game();
+//                } else if (uri.equals(&quot;/undo&quot;)) {
+//                    this.game = this.game.undo();
+//                } else if (uri.equals(&quot;/play&quot;)) {
+//                    this.game = this.game.play(Integer.parseInt(params.get(&quot;x&quot;)), Integer.parseInt(params.get(&quot;y&quot;)));
+//                }
+//                // Extract the view-specific data from the game and apply it to the template.
+//                GameState gameplay = GameState.forGame(this.game);
+//                String HTML = this.template.apply(gameplay);
+//                return newFixedLengthResponse(HTML);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                return null;
+//            }
+//        }
+//    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

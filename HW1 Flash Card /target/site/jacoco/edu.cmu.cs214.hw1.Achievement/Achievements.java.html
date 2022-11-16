@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Achievements.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">FlashCards</a> &gt; <a href="index.source.html" class="el_package">edu.cmu.cs214.hw1.Achievement</a> &gt; <span class="el_source">Achievements.java</span></div><h1>Achievements.java</h1><pre class="source lang-java linenums">package edu.cmu.cs214.hw1.Achievement;
+
+import edu.cmu.cs214.hw1.cards.CardStatus;
+import edu.cmu.cs214.hw1.ordering.CardDeck;
+
+import java.util.List;
+
+public class Achievements {
+    private CardDeck cardDeck;
+<span class="fc" id="L10">    public Achievements(CardDeck cardDeck){</span>
+<span class="fc" id="L11">        this.cardDeck = cardDeck;</span>
+<span class="fc" id="L12">    }</span>
+
+    public CardDeck getCardDeck(){
+<span class="fc" id="L15">        return this.cardDeck;</span>
+    }
+
+    /**
+     * Checks whether all cards are answered correctly in the last round
+     *
+     * @param CardDeck
+     * @return {@code true} if all cards are answered correctly in the last round.
+     */
+    public String allCorrect(){
+<span class="fc" id="L25">        List&lt;CardStatus&gt; cards = this.cardDeck.getCards();</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        for(CardStatus card: cards){</span>
+<span class="fc" id="L27">            boolean resultOfLastRound = getLastResult(card);</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if(!resultOfLastRound){</span>
+<span class="fc" id="L29">                return null;</span>
+            }
+<span class="fc" id="L31">        }</span>
+<span class="fc" id="L32">        return &quot;Good!! You get all cards correct.&quot;;</span>
+    }
+    /**get the last element in the list
+     * @param  CardStatus
+     * @return the boolean value of the last element in the list
+     * */
+    private boolean getLastResult(CardStatus card){
+<span class="fc" id="L39">        List&lt;Boolean&gt; result = card.getResults();</span>
+<span class="fc" id="L40">        return result.get(result.size()-1);</span>
+    }
+
+    /**
+     * Checks whether cards have been answered for at least 5 times
+     *
+     * @param CardDeck
+     * @return {@code true} if cards have been answered for at least 5 rounds.
+     */
+    public String fiveTimes(){
+<span class="fc" id="L50">        List&lt;CardStatus&gt; cards = this.cardDeck.getCards();</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        for(CardStatus card: cards){</span>
+<span class="fc" id="L52">            List&lt;Boolean&gt; success = card.getResults();</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">            if(success.size() &gt;= 5){</span>
+<span class="fc" id="L54">                return &quot;Good!! You have studies the cards five times.&quot;;</span>
+            }else{
+<span class="fc" id="L56">                return null;</span>
+            }
+        }
+<span class="fc" id="L59">        return null;</span>
+    }
+
+    /**
+     * Checks whether there is at least one card that has been answered correctly for three consecutive times.
+     *
+     * @param CardDeck
+     * @return {@code true} if there is at least one card that has been answered correctly for three consecutive rounds.
+     */
+    public String threeConsecutiveCorrect(){
+<span class="fc" id="L69">        List&lt;CardStatus&gt; cards = this.cardDeck.getCards();</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        for(CardStatus card: cards) {</span>
+<span class="fc" id="L71">            List&lt;Boolean&gt; success = card.getResults();</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if (success.size() &lt; 3) {</span>
+<span class="fc" id="L73">                return null;</span>
+            } else {
+<span class="fc bfc" id="L75" title="All 2 branches covered.">                if (getLastResult(card)) {</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">                    if (getSecondLastResult(card)) {</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">                        if (getThirdLastResult(card)) {</span>
+<span class="fc" id="L78">                            return &quot;Good!! You can three cards correct three times consecutively&quot;;</span>
+                        }
+                    }
+                }
+            }
+<span class="fc" id="L83">        }</span>
+<span class="fc" id="L84">        return null;</span>
+    }
+
+    /**get the second last element in the list
+     * @param  CardStatus
+     * @return the boolean value of the second last element in the list
+     * */
+    private boolean getSecondLastResult(CardStatus card){
+<span class="fc" id="L92">        List&lt;Boolean&gt; result = card.getResults();</span>
+<span class="fc" id="L93">        return result.get(result.size()-2);</span>
+    }
+
+    /**get the third last element in the list
+     * @param  CardStatus
+     * @return the boolean value of the third last element in the list
+     * */
+    private boolean getThirdLastResult(CardStatus card){
+<span class="fc" id="L101">        List&lt;Boolean&gt; result = card.getResults();</span>
+<span class="fc" id="L102">        return result.get(result.size()-3);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

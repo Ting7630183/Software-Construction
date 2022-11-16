@@ -1,0 +1,19 @@
+#Fri Sep 17 17:13:06 EDT 2021
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/prioritization/RecentMistakesFirstSorter.java=1631646243417
+configuration*?=7AC77DFC53BD64E47435081B3DEF1997E404969C
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/Main.java=1631660260072
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/cards/FlashCard.java=1631107630876
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/data/CardStore.java=1631854954118
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/prioritization/MostMistakesFirstSorter.java=1631107630881
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/repetition/NonRepeatingCardOrganizer.java=1631107630882
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/CardOrganizer.java=1631107630879
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/repetition/RepeatingCardOrganizer.java=1631107630883
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/data/InMemoryCardStore.java=1631909655061
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/CardDeck.java=1631107630879
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/cards/FlashCardTest.java=1631814854081
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/prioritization/CardShuffler.java=1631107630881
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/repetition/CardRepeater.java=1631107630882
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/MultiOrganizer.java=1631107630880
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/data/CardLoader.java=1631640255006
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/cards/CardStatus.java=1631107630875
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/cli/UI.java=1631909134228

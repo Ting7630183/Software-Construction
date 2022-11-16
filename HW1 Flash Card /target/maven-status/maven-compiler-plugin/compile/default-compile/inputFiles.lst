@@ -1,0 +1,17 @@
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/cards/FlashCard.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/data/CardStore.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/Main.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/prioritization/RecentMistakesFirstSorter.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/prioritization/MostMistakesFirstSorter.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/repetition/RepeatingCardOrganizer.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/repetition/NonRepeatingCardOrganizer.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/CardOrganizer.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/CardDeck.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/data/InMemoryCardStore.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/repetition/CardRepeater.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/Achievement/Achievements.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/prioritization/CardShuffler.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/ordering/MultiOrganizer.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/cli/UI.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/cards/CardStatus.java
+/Users/christy/Desktop/Software/Homeworks/hw1-flash-cards-Ting7630183/src/main/java/edu/cmu/cs214/hw1/data/CardLoader.java

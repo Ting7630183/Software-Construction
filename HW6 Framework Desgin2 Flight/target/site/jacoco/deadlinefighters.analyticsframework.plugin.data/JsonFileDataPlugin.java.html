@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonFileDataPlugin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hw6-analytics-framework-deadline-fighters</a> &gt; <a href="index.source.html" class="el_package">deadlinefighters.analyticsframework.plugin.data</a> &gt; <span class="el_source">JsonFileDataPlugin.java</span></div><h1>JsonFileDataPlugin.java</h1><pre class="source lang-java linenums">package deadlinefighters.analyticsframework.plugin.data;
+import deadlinefighters.analyticsframework.framework.core.DataPlugin;
+import deadlinefighters.analyticsframework.framework.core.Framework;
+import deadlinefighters.analyticsframework.framework.model.StockQuote;
+import deadlinefighters.analyticsframework.framework.model.StockQuotesResult;
+import org.json.simple.parser.JSONParser;
+
+import java.io.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
+
+/**
+ * Import data from Json file
+ *
+ * It should have the following columns:
+ * symbol,date,open,high,low,close
+ *
+ * Symbol, date and close are required columns
+ *
+ * Date format: yyyy-MM-dd
+ *
+ * Example: src/main/resources/bitcoin.json (note: volume is ignored)
+ */
+public class JsonFileDataPlugin implements DataPlugin {
+
+    private static final String NAME = &quot;Json local file&quot;;
+<span class="nc" id="L36">    private static final String[] TARGET_COL = {&quot;symbol&quot;, &quot;date&quot;,</span>
+        &quot;open&quot;, &quot;high&quot;, &quot;low&quot;, &quot;close&quot;};
+    private Framework framework;
+    private static FileReader f;
+
+<span class="nc" id="L41">    public JsonFileDataPlugin() {</span>
+<span class="nc" id="L42">    }</span>
+
+    @Override
+    public String getName() {
+<span class="nc" id="L46">        return NAME;</span>
+    }
+
+    @Override
+    public void onRegister(Framework f) {
+<span class="nc" id="L51">        framework = f;</span>
+<span class="nc" id="L52">    }</span>
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L56">        return super.hashCode();</span>
+    }
+    /**
+     * Establish a connection with the data source, this is called by the
+     * framework before getStockQuotes is called.
+     *
+     * @param arg argument required to initialize the data plugin
+     *            (e.g. local file path, web url or database url)
+     * @throws FileNotFoundException when fail to parse the arg
+     *                                  or IOException when fail to establish a connection
+     */
+    @Override
+    public void openConnection(String arg) throws FileNotFoundException {
+<span class="nc" id="L69">        f = new FileReader(arg);</span>
+<span class="nc" id="L70">    }</span>
+
+    /**
+     * Read from the data source with only selected symbols
+     * and parse the data into stock object.
+     * &lt;p&gt;
+     * If exception was thrown during the execution, the framework should catch
+     * ExecutionException and handle it.
+     * &lt;p&gt;
+     * If symbols are missing in the data source, error message will be written
+     * in the result.
+     *
+     * @param symbols a list of selected symbols
+     * @return a promise of stock quotes result
+     */
+    @Override
+    public CompletableFuture&lt;StockQuotesResult&gt; getStockQuotes(List&lt;String&gt; symbols) {
+<span class="nc" id="L87">        CompletableFuture&lt;StockQuotesResult&gt; stockQuotesResultCompletableFuture</span>
+<span class="nc" id="L88">            = CompletableFuture.supplyAsync(new Supplier&lt;StockQuotesResult&gt;() {</span>
+            //            @Override
+            public StockQuotesResult get() {
+<span class="nc" id="L91">                List&lt;StockQuote&gt; stockQuotes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L92">                boolean hasError = false;</span>
+<span class="nc" id="L93">                String errorMessage = null;</span>
+<span class="nc" id="L94">                Set&lt;String&gt; symbolsSet = new HashSet&lt;&gt;(symbols);</span>
+<span class="nc" id="L95">                Set&lt;String&gt; symbolsVisited = new HashSet&lt;&gt;();</span>
+
+                String[] nextRecord;
+                int[] colIndex;
+                try {
+<span class="nc" id="L100">                    JSONParser JsonParser = new JSONParser();</span>
+<span class="nc" id="L101">                    JSONArray JsonArray = (JSONArray) JsonParser.parse(f);</span>
+
+<span class="nc bnc" id="L103" title="All 2 branches missed.">                    for (Object o : JsonArray) {</span>
+<span class="nc" id="L104">                        JSONObject object = (JSONObject) o;</span>
+<span class="nc" id="L105">                        String symbol = (String) object.get(&quot;symbol&quot;);</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">                        if (!symbolsSet.contains(symbol)) continue;</span>
+<span class="nc" id="L107">                        symbolsVisited.add(symbol);</span>
+
+<span class="nc" id="L109">                        LocalDate date = LocalDate.parse((CharSequence) object.get(&quot;date&quot;));</span>
+
+<span class="nc" id="L111">                        Object lowObject = object.get(&quot;low&quot;);</span>
+<span class="nc" id="L112">                        double low = new Double(lowObject.toString());</span>
+
+<span class="nc" id="L114">                        Object highObject = object.get(&quot;high&quot;);</span>
+<span class="nc" id="L115">                        double high = new Double(highObject.toString());</span>
+
+<span class="nc" id="L117">                        Object openObject = object.get(&quot;open&quot;);</span>
+<span class="nc" id="L118">                        double open = new Double(openObject.toString());</span>
+
+<span class="nc" id="L120">                        Object closeObject = object.get(&quot;close&quot;);</span>
+<span class="nc" id="L121">                        double close = new Double(closeObject.toString());</span>
+<span class="nc" id="L122">                        stockQuotes.add(new StockQuote(symbol, date, open,</span>
+<span class="nc" id="L123">                            close, high, low));</span>
+<span class="nc" id="L124">                    }</span>
+
+<span class="nc" id="L126">                }catch(IOException | ParseException e){</span>
+<span class="nc" id="L127">                    System.out.println(&quot;IO error&quot;);</span>
+<span class="nc" id="L128">                }</span>
+
+                // check symbols that haven't seen
+<span class="nc" id="L131">                symbolsSet.removeAll(symbolsVisited);</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">                if (symbolsSet.size() != 0) {</span>
+<span class="nc" id="L133">                    hasError = true;</span>
+<span class="nc" id="L134">                    StringBuilder missingSymbol = new StringBuilder();</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">                    for (String noSymbol : symbolsSet) {</span>
+<span class="nc" id="L136">                        missingSymbol.append(&quot; &quot;).append(noSymbol);</span>
+<span class="nc" id="L137">                    }</span>
+<span class="nc" id="L138">                    errorMessage = &quot;Missing symbols&quot; + missingSymbol;</span>
+                }
+
+<span class="nc" id="L141">                return new StockQuotesResult(stockQuotes, errorMessage);</span>
+            }
+        });
+
+<span class="nc" id="L145">        return stockQuotesResultCompletableFuture;</span>
+    }
+
+    /**
+     * Close the connection with the data source, this is called by the
+     * framework after getStockQuotes is called.
+     *
+     * @throws IOException when fail to close a connection
+     */
+    @Override
+    public void closeConnection() throws IOException {
+<span class="nc" id="L156">        f.close();</span>
+<span class="nc" id="L157">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

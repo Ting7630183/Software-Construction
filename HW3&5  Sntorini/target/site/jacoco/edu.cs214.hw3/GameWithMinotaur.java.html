@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameWithMinotaur.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Santorini</a> &gt; <a href="index.source.html" class="el_package">edu.cs214.hw3</a> &gt; <span class="el_source">GameWithMinotaur.java</span></div><h1>GameWithMinotaur.java</h1><pre class="source lang-java linenums">package edu.cs214.hw3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GameWithMinotaur extends GameSantoriniDecorator{
+<span class="nc" id="L7">    String godCard = &quot;Minotaur&quot;;</span>
+
+
+    public GameWithMinotaur(GameSantoriniComponent component, Board board, Player player, Player nextPlayer, Player player1, boolean lastUp, int[] lastBuildDirection) {
+<span class="nc" id="L11">        super(component, board, player, nextPlayer, lastUp, lastBuildDirection, &quot;Minotaur&quot;);</span>
+<span class="nc" id="L12">    }</span>
+
+    @Override
+    public boolean checkMoveValidity(int x, int y, int[] direction) {
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        return checkOccupancy(x, y, direction) &amp;&amp;</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">                checkHeightDifference(x, y, direction) &amp;&amp;</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">                checkAdjacency(x, y, direction) &amp;&amp;</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">                checkWithinBoard(x, y, direction);</span>
+    }
+
+    private boolean checkOccupancy(int x, int y, int[] direction){
+<span class="nc" id="L23">        int xx = x + direction[0];</span>
+<span class="nc" id="L24">        int yy = y + direction[1];</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        if(this.board.getPlayer(xx, yy) == null){</span>
+<span class="nc" id="L26">            return true;</span>
+        }else{
+<span class="nc bnc" id="L28" title="All 2 branches missed.">            if(!this.board.getPlayer(xx, yy ).equals(this.player)){</span>
+<span class="nc" id="L29">                int xxx = x + direction[0] + direction[0];</span>
+<span class="nc" id="L30">                int yyy = y + direction[1] + direction[1];</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">                if(this.board.getPlayer(xxx, yyy) == null){</span>
+<span class="nc" id="L32">                    return true;</span>
+                }
+            }
+        }
+<span class="nc" id="L36">        return false;</span>
+    }
+
+    private boolean checkHeightDifference(int x, int y, int[] direction){
+<span class="nc" id="L40">        int heightDifference = getHeightDifference(x, y, direction);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if(heightDifference &lt;= 1){</span>
+<span class="nc" id="L42">            return true;</span>
+        }
+<span class="nc" id="L44">        return false;</span>
+    }
+
+    private int getHeightDifference(int x, int y, int[] direction){
+<span class="nc" id="L48">        int currentHeight = this.board.getCell(x, y);</span>
+<span class="nc" id="L49">        int nextHeight = this.board.getCell(direction[0], direction[1]);</span>
+<span class="nc" id="L50">        return nextHeight - currentHeight;</span>
+    }
+
+
+    private boolean checkWithinBoard(int x, int y, int[] direction){
+<span class="nc" id="L55">        int xx = x + direction[0];</span>
+<span class="nc" id="L56">        int yy = y + direction[1];</span>
+<span class="nc bnc" id="L57" title="All 4 branches missed.">        if(xx &lt; 5 &amp;&amp; yy &lt; 5){</span>
+<span class="nc" id="L58">            return true;</span>
+        }
+<span class="nc" id="L60">        return false;</span>
+    }
+
+    private boolean checkAdjacency(int x, int y, int[] direction){
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        for(int i = 0; i &lt; 2; i++){</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">            if(Math.abs(direction[i]) &gt; 1){</span>
+<span class="nc" id="L66">                return false;</span>
+            }
+        }
+<span class="nc" id="L69">        return true;</span>
+    }
+
+    @Override
+    public void move(int x, int y, int[] direction, Player nextPlayer) {
+<span class="nc" id="L74">        int xx = x + direction[0];</span>
+<span class="nc" id="L75">        int yy = y + direction[1];</span>
+<span class="nc" id="L76">        super.move(xx, yy, direction, this.nextPlayer);</span>
+<span class="nc" id="L77">        super.move(x, y, direction, this.player);</span>
+
+<span class="nc" id="L79">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

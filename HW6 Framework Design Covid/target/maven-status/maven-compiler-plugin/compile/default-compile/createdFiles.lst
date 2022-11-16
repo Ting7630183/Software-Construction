@@ -1,0 +1,17 @@
+plugins/dataPlugins/CsvPlugin.class
+plugins/dataRecord/VaccineRecord.class
+plugins/visPlugins/PlotPlugin.class
+plugins/dataRecord/DataRecord.class
+plugins/dataRecord/HospitalRecord.class
+App.class
+plugins/visPlugins/MapPlugin.class
+plugins/dataPlugins/ApiPlugin.class
+framework/gui/State.class
+plugins/dataRecord/CaseRecord.class
+framework/core/FrameworkImpl.class
+framework/core/VisPlugin.class
+framework/core/Framework.class
+plugins/dataRecord/GroupBy.class
+framework/core/DataPlugin.class
+plugins/dataPlugins/JsonPlugin.class
+plugins/visPlugins/PiePlugin.class

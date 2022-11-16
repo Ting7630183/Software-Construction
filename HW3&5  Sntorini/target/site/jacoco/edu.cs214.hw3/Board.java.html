@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Board.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Santorini</a> &gt; <a href="index.source.html" class="el_package">edu.cs214.hw3</a> &gt; <span class="el_source">Board.java</span></div><h1>Board.java</h1><pre class="source lang-java linenums">package edu.cs214.hw3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Board {
+    int[][] cell;
+    Player[][] players;
+
+<span class="nc" id="L10">    public Board(){</span>
+<span class="nc" id="L11">        cell = new int[5][5];</span>
+<span class="nc bnc" id="L12" title="All 2 branches missed.">        for(int i = 0; i &lt; 5; i++){</span>
+<span class="nc bnc" id="L13" title="All 2 branches missed.">            for(int j = 0; j &lt; 5; j++){</span>
+<span class="nc" id="L14">                cell[i][j] = 0;</span>
+            }
+        }
+<span class="nc" id="L17">        players = new Player[5][5];</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        for(int i = 0; i &lt; 5; i++){</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">            for(int j = 0; j &lt; 5; j++){</span>
+<span class="nc" id="L20">                players[i][j] = null;</span>
+            }
+        }
+<span class="nc" id="L23">    }</span>
+
+<span class="nc" id="L25">    public Board(int[][] cell, Player[][] players){</span>
+<span class="nc" id="L26">        this.cell = cell;</span>
+<span class="nc" id="L27">        this.players = players;</span>
+<span class="nc" id="L28">    }</span>
+
+    public int getCell(int x, int y){
+<span class="nc" id="L31">        return cell[x][y];</span>
+    }
+
+    public void updateCell(int x, int y, boolean block) {
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if (block == true) {</span>
+<span class="nc" id="L36">            cell[x][y] = getCell(x, y) + 1;</span>
+        }else{
+<span class="nc" id="L38">            cell[x][y] = 4;</span>
+        }
+<span class="nc" id="L40">    }</span>
+
+    public Player getPlayer(int x, int y){
+<span class="nc" id="L43">        return players[x][y];</span>
+    }
+
+    public void updatePlayer(int x, int y, Player player){
+<span class="nc" id="L47">        this.players[x][y] = player;</span>
+<span class="nc" id="L48">    }</span>
+
+    public List&lt;List&lt;Integer&gt;&gt; getPlayerPosition(Player player){
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if(player == null){</span>
+<span class="nc" id="L52">            return new ArrayList&lt;&gt;();</span>
+        }
+<span class="nc" id="L54">        List&lt;List&lt;Integer&gt;&gt; playerPosition = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        for(int i = 0; i &lt; 5; i++){</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">            for(int j = 0; j &lt; 5; j++){</span>
+<span class="nc bnc" id="L57" title="All 4 branches missed.">                if(this.getPlayer(i, j) != null &amp;&amp; this.getPlayer(i, j).equals(player)){</span>
+<span class="nc" id="L58">                    List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</span>
+<span class="nc" id="L59">                    list.add(i);</span>
+<span class="nc" id="L60">                    list.add(j);</span>
+<span class="nc" id="L61">                    playerPosition.add(list);</span>
+                }
+            }
+        }
+<span class="nc" id="L65">        return playerPosition;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

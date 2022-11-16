@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BarChartVisualizationPlugin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hw6-analytics-framework-deadline-fighters</a> &gt; <a href="index.source.html" class="el_package">deadlinefighters.analyticsframework.plugin.visualization</a> &gt; <span class="el_source">BarChartVisualizationPlugin.java</span></div><h1>BarChartVisualizationPlugin.java</h1><pre class="source lang-java linenums">package deadlinefighters.analyticsframework.plugin.visualization;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import deadlinefighters.analyticsframework.framework.core.Framework;
+import deadlinefighters.analyticsframework.framework.core.VisualizationPlugin;
+import deadlinefighters.analyticsframework.framework.model.AggregatedStockQuotes;
+
+import java.util.List;
+
+<span class="nc" id="L10">public class BarChartVisualizationPlugin implements VisualizationPlugin {</span>
+    private Framework framework;
+    private static final String NAME = &quot;Bar chart&quot;;
+
+    @Override
+    public String getName() {
+<span class="nc" id="L16">        return NAME;</span>
+    }
+
+    @Override
+    public void onRegister(Framework framework) {
+<span class="nc" id="L21">        this.framework = framework;</span>
+<span class="nc" id="L22">    }</span>
+
+    @Override
+    public boolean isSupported(int symbolCount) {
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        return symbolCount == 1;</span>
+    }
+
+    @Override
+    public String render(List&lt;AggregatedStockQuotes&gt; data) {
+<span class="nc" id="L31">        StringBuilder sb = new StringBuilder();</span>
+        try {
+<span class="nc" id="L33">            sb.append(&quot;&lt;script&gt;\n&quot;);</span>
+<span class="nc" id="L34">            sb.append(VisualizationHelper.quotesToJavascript(data));</span>
+<span class="nc" id="L35">            sb.append(&quot;&quot;&quot;</span>
+
+                var trace1 = {
+                  x: [],
+                  y: [],
+                  name: 'High',
+                  type: 'bar'
+                };
+                var trace2 = {
+                  x: [],
+                  y: [],
+                  name: 'Low',
+                  type: 'bar'
+                };
+                aggregated[0].monthly.forEach(q =&gt; {
+                    if (q.date &lt;= &quot;2017-01-01&quot;) {
+                        return;
+                    }
+                    trace1.x.push(q.date);
+                    trace2.x.push(q.date);
+                    trace1.y.push(q.high);
+                    trace2.y.push(q.low);
+                });
+
+                var data = [trace1, trace2];
+
+                var layout = {barmode: 'group'};
+                 var layout = {
+                    title: 'Monthly Highest and Lowest Stock Price - ' + aggregated[0].symbol
+                };
+
+
+                Plotly.newPlot('myDiv', data, layout);
+
+                &quot;&quot;&quot;);
+<span class="nc" id="L70">            sb.append(&quot;&lt;/script&gt;\n&quot;);</span>
+<span class="nc" id="L71">            sb.append(&quot;&lt;div id=\&quot;myDiv\&quot; /&gt;&quot;);</span>
+<span class="nc" id="L72">            return sb.toString();</span>
+<span class="nc" id="L73">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L74">            return e.toString();</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
